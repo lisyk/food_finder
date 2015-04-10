@@ -4,6 +4,13 @@ require 'restaurant'
 
 class Guide
     
+    class Config
+        @@actions = ['list', 'find', 'add', 'quit']
+        def self.actions
+            @@actions
+        end
+    end
+    
     def initialize(path=nil)
         #locate the restarant text file at path
         Restaurant.filepath=path
@@ -32,10 +39,15 @@ class Guide
     end
 
     def get_action
-        print ">"
-        user_response = gets.chomp
-        action = user_response.downcase.strip
-        return action
+        action = nil
+#keep asking for user input until we get a valid action
+        until Guide::Config.actions.include?(action)
+            puts "Actions:" + Guide::Config.actions.join(",")
+            print ">"
+            user_response = gets.chomp
+            action = user_response.downcase.strip
+            return action
+        end
     end
     
     def do_action(action)
@@ -50,7 +62,7 @@ class Guide
               return :quit
             else
               puts "\n I don't know this command. \n"
-            end
+        end
     end
     
     def introduction
