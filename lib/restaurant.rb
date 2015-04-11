@@ -30,9 +30,16 @@ def self.create_file
     return file_usable?
 end
 
-def self.saved_restaurant
-  #read the restaurant file
-  #return instance of restaurant
+def self.saved_restaurants
+  restaurants = []
+    if file_usable?
+        file = File.new(@@filepath, 'r')
+        file.each_line do |line|
+            restaurants << Restaurant.new.import_line(line.chomp)  
+        end
+        file.close
+    end
+    return restaurants
 end
     
 def self.build_from_questions
@@ -45,6 +52,13 @@ def self.build_from_questions
     args[:price] = gets.chomp.strip
 
     return self.new(args)
+    
+end
+    
+def import_line(line)
+    line_array = line.split("\t")
+    @name, @cuisine, @price = line_array
+    return self
     
 end
     
