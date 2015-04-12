@@ -1,4 +1,6 @@
-Chipotle	mexican	$8
+Chipotle	mexican	8
 Lama Pama	uk	30
 MacDak	burgers	5
 Chiken Picken	meet	9
+kusok myasa	miasoo	30
+Thomas	burgers	12
