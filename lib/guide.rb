@@ -66,10 +66,10 @@ class Guide
     end
 
     def list
-        puts  "\nListing restaurants\n\n".upcase
+        output_action_header("Listing restaurants")
         restaurant = Restaurant.saved_restaurants
         restaurant.each do |rest|
-            puts rest.name + "|" + rest.cuisine + "|" + rest.price
+            puts rest.name + "|" + rest.cuisine + "|" + rest.formatted_price
             end
     end
 
@@ -92,6 +92,13 @@ class Guide
     
     def conclusion
         puts "\n<<< Goodbye and Bon Appetit! >>>\n\n\n"
+    end
+
+
+    private
+    def output_action_header(text)
+        puts  "\n#{text}\n\n".upcase
+        
     end
     
 end
