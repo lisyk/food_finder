@@ -85,6 +85,7 @@ class Guide
             end
         output_restaurant_table(restaurants)
         puts "Sort using: 'list cuisine'"
+        
     end
 
     def add
